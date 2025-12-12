@@ -14,6 +14,6 @@ namespace ArqWebApp.Api
                 var Configuration = configBuilder.Build();
             })
             .ConfigureWebHostDefaults(webBuilder => webBuilder
-            .UseStartup<startup>());
+            .UseStartup<Startup>());
     }
 }
