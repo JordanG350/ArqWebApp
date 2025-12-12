@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ArqWebApp.Api/ArqWebApp.Api.csproj" />
+  <Project Path="ArqWebApp.Core/ArqWebApp.Core.csproj" />
+  <Project Path="ArqWebApp.Infraestructure/ArqWebApp.Infraestructure.csproj" />
+</Solution>
