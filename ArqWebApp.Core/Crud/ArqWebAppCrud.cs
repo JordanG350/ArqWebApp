@@ -14,35 +14,34 @@ namespace ArqWebApp.Core.Crud
         {
             _repo = repo;
         }
-        public async Task<Cars> CreateCar(Cars cars)
+        public async Task<Product> CreateProduct(Product product)
         {
-            return await _repo.AddAsync(cars);
+            return await _repo.AddAsync(product);
         }
 
-        public async Task<bool> DeleteCar(int id)
+        public async Task<bool> DeleteProduct(int id)
         {
             return await _repo.DeleteAsync(id);
         }
 
-        public async Task<IEnumerable<Cars>> GetAllCars()
+        public async Task<IEnumerable<Product>> GetAllProduct()
         {
             return await _repo.GetAllAsync();
         }
 
-        public async Task<Cars> GetCarById(int id)
+        public async Task<Product> GetProductById(int id)
         {
             return await _repo.GetByIdAsync(id);
         }
 
-        public async Task<Cars> UpdateCar(int id, Cars cars)
+        public async Task<Product> UpdateProduct(int id, Product product)
         {
             var existing = await _repo.GetByIdAsync(id);
             if (existing == null) return null;
 
-            existing.Name = cars.Name;
-            existing.Year = cars.Year;
-            existing.Description = cars.Description;
-            existing.Price = cars.Price;
+            existing.Name = product.Name;
+            existing.Description = product.Description;
+            existing.Price = product.Price;
 
             return await _repo.UpdateAsync(existing);
 

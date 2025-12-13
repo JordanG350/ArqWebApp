@@ -4,10 +4,10 @@ namespace ArqWebApp.Core.Crud.Interfaces
 {
     public interface IArqWebAppCrud
     {
-        Task<IEnumerable<Cars>> GetAllCars();
-        Task<Cars> GetCarById(int id);
-        Task<Cars> CreateCar(Cars cars);
-        Task<Cars> UpdateCar(int id, Cars cars);
-        Task<bool> DeleteCar(int id);
+        Task<IEnumerable<Product>> GetAllProduct();
+        Task<Product> GetProductById(int id);
+        Task<Product> CreateProduct(Product product);
+        Task<Product> UpdateProduct(int id, Product product);
+        Task<bool> DeleteProduct(int id);
     }
 }

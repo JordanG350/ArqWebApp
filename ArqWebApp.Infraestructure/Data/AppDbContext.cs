@@ -10,6 +10,6 @@ namespace ArqWebApp.Api.Data
         {
         }
 
-        public DbSet<Cars> cars { get; set; }
+        public DbSet<Product> product { get; set; }
     }
 }

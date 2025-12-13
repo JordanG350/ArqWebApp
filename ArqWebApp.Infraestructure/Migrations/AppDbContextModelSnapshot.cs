@@ -21,7 +21,7 @@ namespace ArqWebApp.Infraestructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ArqWebApp.Infraestructure.Models.Cars", b =>
+            modelBuilder.Entity("ArqWebApp.Core.Crud.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,13 +40,9 @@ namespace ArqWebApp.Infraestructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("cars");
+                    b.ToTable("product");
                 });
 #pragma warning restore 612, 618
         }
