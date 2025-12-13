@@ -15,34 +15,34 @@ namespace ArqWebApp.Api.Controllers
             _service = service;
         }
 
-        [HttpGet(Name = "GetAllCars")]
-        public async Task<IActionResult> GetAllCars()
-            => Ok(await _service.GetAllCars());
+        [HttpGet(Name = "GetAllProduct")]
+        public async Task<IActionResult> GetAllProduct()
+            => Ok(await _service.GetAllProduct());
 
-        [HttpGet(Name = "GetCarById")]
-        public async Task<IActionResult> GetCarById(int id)
+        [HttpGet(Name = "GetProductById")]
+        public async Task<IActionResult> GetProductById(int id)
         {
-            var result = await _service.GetCarById(id);
+            var result = await _service.GetProductById(id);
             if (result == null) return NotFound();
             return Ok(result);
         }
 
-        [HttpPost(Name = "CreateCar")]
-        public async Task<IActionResult> CreateCar([FromBody] Cars car)
-            => Ok(await _service.CreateCar(car));
+        [HttpPost(Name = "CreateProduct")]
+        public async Task<IActionResult> CreateProduct([FromBody] Product car)
+            => Ok(await _service.CreateProduct(car));
 
-        [HttpPut(Name = "UpdateCar")]
-        public async Task<IActionResult> UpdateCar(int id, [FromBody] Cars car)
+        [HttpPut(Name = "UpdateProduct")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product car)
         {
-            var result = await _service.UpdateCar(id, car);
+            var result = await _service.UpdateProduct(id, car);
             if (result == null) return NotFound();
             return Ok(result);
         }
 
-        [HttpDelete(Name = "DeleteCar")]
-        public async Task<IActionResult> DeleteCar(int id)
+        [HttpDelete(Name = "DeleteProduct")]
+        public async Task<IActionResult> DeleteProduct(int id)
         {
-            var ok = await _service.DeleteCar(id);
+            var ok = await _service.DeleteProduct(id);
             if (!ok) return NotFound();
             return NoContent();
         }

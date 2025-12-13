@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArqWebApp.Infraestructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251212165024_initialProduct")]
-    partial class initialProduct
+    [Migration("20251213001454_cambioCarsProducto")]
+    partial class cambioCarsProducto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace ArqWebApp.Infraestructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ArqWebApp.Infraestructure.Models.Product", b =>
+            modelBuilder.Entity("ArqWebApp.Core.Crud.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,10 +42,6 @@ namespace ArqWebApp.Infraestructure.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
-
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

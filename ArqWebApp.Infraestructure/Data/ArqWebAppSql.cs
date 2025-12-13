@@ -14,32 +14,32 @@ namespace ArqWebApp.Infraestructure.Data
             _context = context;
         }
 
-        public async Task<IEnumerable<Cars>> GetAllAsync() =>
-            await _context.cars.ToListAsync();
+        public async Task<IEnumerable<Product>> GetAllAsync() =>
+            await _context.product.ToListAsync();
 
-        public async Task<Cars> GetByIdAsync(int id) =>
-            await _context.cars.FindAsync(id);
+        public async Task<Product> GetByIdAsync(int id) =>
+            await _context.product.FindAsync(id);
 
-        public async Task<Cars> AddAsync(Cars cars)
+        public async Task<Product> AddAsync(Product product)
         {
-            _context.cars.Add(cars);
+            _context.product.Add(product);
             await _context.SaveChangesAsync();
-            return cars;
+            return product;
         }
 
-        public async Task<Cars> UpdateAsync(Cars cars)
+        public async Task<Product> UpdateAsync(Product product)
         {
-            _context.cars.Update(cars);
+            _context.product.Update(product);
             await _context.SaveChangesAsync();
-            return cars;
+            return product;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var entity = await _context.cars.FindAsync(id);
+            var entity = await _context.product.FindAsync(id);
             if (entity == null) return false;
 
-            _context.cars.Remove(entity);
+            _context.product.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
         }

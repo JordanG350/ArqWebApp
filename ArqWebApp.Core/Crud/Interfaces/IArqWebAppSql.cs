@@ -7,10 +7,10 @@ namespace ArqWebApp.Core.Crud.Interfaces
 {
     public interface IArqWebAppSql
     {
-        Task<IEnumerable<Cars>> GetAllAsync();
-        Task<Cars> GetByIdAsync(int id);
-        Task<Cars> AddAsync(Cars cars);
-        Task<Cars> UpdateAsync(Cars cars);
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product> GetByIdAsync(int id);
+        Task<Product> AddAsync(Product product);
+        Task<Product> UpdateAsync(Product product);
         Task<bool> DeleteAsync(int id);
     }
 }

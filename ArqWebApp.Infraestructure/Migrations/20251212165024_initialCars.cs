@@ -5,13 +5,13 @@
 namespace ArqWebApp.Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCars : Migration
+    public partial class initialProduct : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "cars",
+                name: "product",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +23,7 @@ namespace ArqWebApp.Infraestructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cars", x => x.Id);
+                    table.PrimaryKey("PK_product", x => x.Id);
                 });
         }
 
@@ -31,7 +31,7 @@ namespace ArqWebApp.Infraestructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "cars");
+                name: "product");
         }
     }
 }
