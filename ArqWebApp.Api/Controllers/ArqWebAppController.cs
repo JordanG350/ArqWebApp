@@ -1,6 +1,8 @@
+using ArqWebApp.Api.Models;
 using ArqWebApp.Core.Crud.Interfaces;
 using ArqWebApp.Core.Crud.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ArqWebApp.Api.Controllers
 {
@@ -23,7 +25,14 @@ namespace ArqWebApp.Api.Controllers
         public async Task<IActionResult> GetProductById(int id)
         {
             var result = await _service.GetProductById(id);
-            if (result == null) return NotFound();
+            if (result == null) 
+            {
+                ErrorDetails details = new ErrorDetails();
+                details.StatusCode = (int) HttpStatusCode.NotFound;
+                details.Message = "Producto no encontrado";
+
+                return NotFound(details);
+            } 
             return Ok(result);
         }
 
