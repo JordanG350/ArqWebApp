@@ -1,5 +1,6 @@
 ﻿using ArqWebApp.Api.Data;
 using ArqWebApp.Api.Dependecy;
+using ArqWebApp.Api.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 
@@ -44,6 +45,8 @@ namespace ArqWebApp.Api
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 db.Database.Migrate();
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             AppBuilderExtentions.AddSwaggerColletion(app);
 
