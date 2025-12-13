@@ -25,15 +25,7 @@ namespace ArqWebApp.Api.Controllers
         public async Task<IActionResult> GetProductById(int id)
         {
             var result = await _service.GetProductById(id);
-            if (result == null) 
-            {
-                ErrorDetails details = new ErrorDetails();
-                details.StatusCode = (int) HttpStatusCode.NotFound;
-                details.Message = "Producto no encontrado";
-
-                return NotFound(details);
-            } 
-            return Ok(result);
+            return result == null ? throw new KeyNotFoundException("Producto no encontrado") : (IActionResult)Ok(result);
         }
 
         [HttpPost(Name = "CreateProduct")]
@@ -44,16 +36,14 @@ namespace ArqWebApp.Api.Controllers
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product car)
         {
             var result = await _service.UpdateProduct(id, car);
-            if (result == null) return NotFound();
-            return Ok(result);
+            return result == null ? throw new KeyNotFoundException("Producto no encontrado") : (IActionResult)Ok(result);
         }
 
         [HttpDelete(Name = "DeleteProduct")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var ok = await _service.DeleteProduct(id);
-            if (!ok) return NotFound();
-            return NoContent();
+            return !ok ? throw new KeyNotFoundException("Producto no encontrado") : (IActionResult)Ok();
         }
     }
 }
