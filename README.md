@@ -1,4 +1,4 @@
-# polimarket-api
+# ArqWebApp
 
 Backend REST api
 
