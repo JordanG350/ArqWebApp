@@ -8,6 +8,7 @@ namespace ArqWebApp.Api.Dependecy
         public static IServiceCollection AddDataServices(this IServiceCollection services)
         {
             services.AddScoped<IArqWebAppSql, ArqWebAppSql>();
+            services.AddScoped<IArqWebAppCrudGraphQL, ArqWebSqlGraphQL>();
             return services;
         }
     }

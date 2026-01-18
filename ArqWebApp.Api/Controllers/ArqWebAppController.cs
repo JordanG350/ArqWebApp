@@ -3,6 +3,7 @@ using ArqWebApp.Core.Crud.Interfaces;
 using ArqWebApp.Core.Crud.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
 namespace ArqWebApp.Api.Controllers
 {
