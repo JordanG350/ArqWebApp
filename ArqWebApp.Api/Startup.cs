@@ -1,6 +1,7 @@
 ﻿using ArqWebApp.Api.Data;
 using ArqWebApp.Api.Dependecy;
 using ArqWebApp.Api.GraphQL;
+using ArqWebApp.Api.GraphQL.Errors;
 using ArqWebApp.Api.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
@@ -36,7 +37,11 @@ namespace ArqWebApp.Api
 
             services
                 .AddGraphQLServer()
-                .AddQueryType<QueryGraphQL>()     
+                .AddQueryType<QueryGraphQL>()
+                .AddErrorFilter<GraphQLErrorFilter>().ModifyRequestOptions(opt =>
+                {
+                    opt.IncludeExceptionDetails = false;
+                })
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting();

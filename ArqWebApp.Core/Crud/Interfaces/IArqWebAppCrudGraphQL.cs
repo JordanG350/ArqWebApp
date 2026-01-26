@@ -8,5 +8,8 @@ namespace ArqWebApp.Core.Crud.Interfaces
     public interface IArqWebAppCrudGraphQL
     {
         IQueryable<Product> GetProducts();
+        Task<Product> Create(Product product);
+        Task<Product> Update(Product product);
+        Task<bool> Delete(int id);
     }
 }
