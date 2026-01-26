@@ -1,8 +1,11 @@
 ﻿using ArqWebApp.Api.Data;
 using ArqWebApp.Api.Dependecy;
+using ArqWebApp.Api.GraphQL;
+using ArqWebApp.Api.GraphQL.Errors;
 using ArqWebApp.Api.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ArqWebApp.Api
 {
@@ -31,9 +34,20 @@ namespace ArqWebApp.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ArqWebApp.Api", Version = "v1" });
             });
+
+            services
+                .AddGraphQLServer()
+                .AddQueryType<QueryGraphQL>()
+                .AddErrorFilter<GraphQLErrorFilter>().ModifyRequestOptions(opt =>
+                {
+                    opt.IncludeExceptionDetails = false;
+                })
+                .AddProjections()
+                .AddFiltering()
+                .AddSorting();
         }
 
-        public void configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +77,7 @@ namespace ArqWebApp.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGraphQL();
             });
         }
     }

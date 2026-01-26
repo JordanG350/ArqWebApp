@@ -1,5 +1,6 @@
 ﻿using ArqWebApp.Api.Models;
 using System.Net;
+using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
 namespace ArqWebApp.Api.Middlewares
 {
